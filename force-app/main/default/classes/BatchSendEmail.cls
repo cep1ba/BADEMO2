@@ -1,11 +1,5 @@
 public with sharing class BatchSendEmail implements Database.Batchable<SObject>, Database.Stateful {
-/*
-Given that a student is on a long term course (i.e. MCA, ADAC, MCDC, ACT/AID, ACD) 
-When the system generates the warm letter to be sent to the student at the beginning of the month 2 of the course
-Then the email contains the student name, student number, the course, the welcome message, and any other onboarding information.
-BatchSendEmail batchJob = new BatchSendEmail ();
-Id batchJobId = Database.executeBatch(batchJob, 200);
-*/   
+ 
     public Database.QueryLocator start(Database.BatchableContext context){
         //System.Label.MyLabelName
         String query = 'SELECT Id,Supervisor__c,Contact__c,Contact__r.Email,Course__c, Months_from_Start__c, Emails_Sent__c FROM Enrolment__c ' +
